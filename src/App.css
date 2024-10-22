@@ -1,0 +1,62 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.tag-input-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  font-size: 16px;
+}
+
+.formatted-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+  white-space: pre-wrap; 
+  word-wrap: break-word;
+  color: transparent; 
+  pointer-events: none; 
+  z-index: 1;
+}
+
+.formatted-input .tag {
+  color: blue; 
+}
+
+.textarea {
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  background: transparent;
+  z-index: 2;
+  color: black;
+  caret-color: black; 
+  border: 1px solid #ddd;
+  height: 100px;
+}
+
+.suggestions {
+  list-style: none;
+  border: 1px solid #ddd;
+  background-color: white;
+  margin-top: 5px;
+  position: absolute;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 3;
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
