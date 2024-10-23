@@ -2,10 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import Tribute from 'tributejs';
 import { predefinedTagTribute } from '../../../utils/data';
 import { setCaretToEnd } from '../../../utils/utils';
-import { useTagInputStore } from '../../../store';
 
 const TributeInput = () => {
-    const { setTributeInputValue } = useTagInputStore();
     const divRef = useRef<HTMLDivElement>(null);
     const tributeRef = useRef<Tribute<any> | null>(null);
 
@@ -36,7 +34,6 @@ const TributeInput = () => {
 
     const handleInputChange = (e: React.FormEvent<HTMLDivElement>) => {
         const text = e.currentTarget.innerHTML;
-        setTributeInputValue(text);
 
         if (!tributeRef.current?.isActive) {
             highlightUnrecognizedHashtags(text);

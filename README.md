@@ -1,6 +1,8 @@
 #  Front-End technical challenge: Coding exercise - #tag function
 
- 
+ ![preview](https://github.com/kristinamartinkevich/tag-input/blob/main/src/assets/preview.png?raw=true)
+
+
 Write a #tag function and implement it in an input text area or other object managing text. The resulting field should:
 
 1. lookup and suggest #tags from the list below while typing
