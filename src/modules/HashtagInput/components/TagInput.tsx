@@ -1,5 +1,5 @@
 import { useRef, ChangeEvent } from 'react';
-import { predefinedTags } from '../../../utils/data';
+import { CHAR_PER_LINE, LINE_HEIGHT, predefinedTags } from '../../../utils/data';
 import { useTagInputStore } from '../../../store';
 import SuggestionsList from './SuggestionList';
 
@@ -13,7 +13,23 @@ const TagInput = () => {
         setSuggestionPosition,
     } = useTagInputStore();
 
-    const textareaRef = useRef(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    const updateFormattedInput = (text: string) => {
+        const words = text.split(' ').map(word =>
+            word.startsWith('#') ? `<span class="tag">${word}</span>` : word
+        );
+        setFormattedInput(words.join(' '));
+    };
+
+    const updateSuggestions = (lastWord: string) => {
+        if (lastWord.startsWith('#')) {
+            const matches = predefinedTags.filter(tag => ("#" + tag).startsWith(lastWord));
+            setSuggestions(matches);
+        } else {
+            setSuggestions([]);
+        }
+    };
 
     const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const value = e.target.value;
@@ -22,24 +38,9 @@ const TagInput = () => {
         const words = value.split(' ');
         const lastWord = words[words.length - 1];
 
-        if (lastWord.startsWith('#')) {
-            const matches = predefinedTags.filter(tag => ("#" + tag).startsWith(lastWord));
-            setSuggestions(matches);
-            updateSuggestionPosition();
-        } else {
-            setSuggestions([]);
-        }
+        updateSuggestions(lastWord);
         updateFormattedInput(value);
-    };
-
-    const updateFormattedInput = (text: string) => {
-        const words = text.split(' ').map(word => {
-            if (word.startsWith('#')) {
-                return `<span class="tag">${word}</span>`;
-            }
-            return word;
-        });
-        setFormattedInput(words.join(' '));
+        updateSuggestionPosition();
     };
 
     const updateSuggestionPosition = () => {
@@ -48,11 +49,10 @@ const TagInput = () => {
             const cursorPos = textarea.selectionEnd;
             const textBeforeCursor = textarea.value.slice(0, cursorPos);
             const lines = textBeforeCursor.split('\n');
-            const lineCount = Math.ceil(textBeforeCursor.length / 21);
+            const lineCount = Math.ceil(textBeforeCursor.length / CHAR_PER_LINE);
             const currentLine = lines[lines.length - 1];
-            const lineHeight = 24;
 
-            const top = window.scrollY + (lineCount * lineHeight);
+            const top = window.scrollY + (lineCount * LINE_HEIGHT);
             const left = currentLine.length * 2;
 
             setSuggestionPosition({ top, left });
@@ -68,40 +68,22 @@ const TagInput = () => {
         updateFormattedInput(newInputValue);
     };
 
-    const highlightMatch = (suggestion: string, query: string) => {
-        const index = suggestion.toLowerCase().indexOf(query.toLowerCase());
-        if (index === -1) return suggestion;
-
-        const beforeMatch = suggestion.slice(0, index);
-        const match = suggestion.slice(index, index + query.length);
-        const afterMatch = suggestion.slice(index + query.length);
-
-        return (
-            <>
-                {beforeMatch}
-                <span className="highlight">{match}</span>
-                {afterMatch}
-            </>
-        );
-    };
-
-
     return (
         <div className="tag-input-container">
             <div
                 className="formatted-input"
                 dangerouslySetInnerHTML={{ __html: formattedInput }}
-            ></div>
-            <textarea rows={4}
+            />
+            <textarea
+                rows={4}
                 ref={textareaRef}
                 value={inputValue}
                 onChange={handleInputChange}
-                placeholder="Type # to tag..."
-                className="input-overlay form-control"
+                placeholder="Type # to hashtag..."
+                className="form-control"
             />
             <SuggestionsList
                 handleSuggestionClick={handleSuggestionClick}
-                highlightMatch={highlightMatch}
             />
         </div>
     );

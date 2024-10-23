@@ -31,3 +31,40 @@ export const predefinedTags = [
     "abdominal",
     "dilatation"
 ];
+
+export const LINE_HEIGHT = 24;
+export const CHAR_PER_LINE = 21;
+
+export const predefinedTagTribute = [
+    { key: 'liver', value: 'liver' },
+    { key: 'pain', value: 'pain' },
+    { key: 'right', value: 'right' },
+    { key: 'left', value: 'left' },
+    { key: 'pancreas', value: 'pancreas' },
+    { key: 'kidney', value: 'kidney' },
+    { key: 'brain', value: 'brain' },
+    { key: 'severe_pain', value: 'severe_pain' },
+    { key: 'tumour', value: 'tumour' },
+    { key: 'cancer', value: 'cancer' },
+    { key: 'MRI', value: 'MRI' },
+    { key: 'CT', value: 'CT' },
+    { key: 'male', value: 'male' },
+    { key: 'female', value: 'female' },
+    { key: 'bone', value: 'bone' },
+    { key: 'shoulder', value: 'shoulder' },
+    { key: 'hip', value: 'hip' },
+    { key: 'XRAY', value: 'XRAY' },
+    { key: 'knee', value: 'knee' },
+    { key: 'spine', value: 'spine' },
+    { key: 'head', value: 'head' },
+    { key: 'abdomen', value: 'abdomen' },
+    { key: 'contrast', value: 'contrast' },
+    { key: 'fragment', value: 'fragment' },
+    { key: 'detached', value: 'detached' },
+    { key: 'injury', value: 'injury' },
+    { key: 'torn', value: 'torn' },
+    { key: 'rotator', value: 'rotator' },
+    { key: 'cuff', value: 'cuff' },
+    { key: 'abdominal', value: 'abdominal' },
+    { key: 'dilatation', value: 'dilatation' }
+];

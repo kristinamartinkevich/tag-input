@@ -1,12 +1,12 @@
 import React from 'react';
 import { useTagInputStore } from '../../../store';
+import { highlightMatch } from '../../../utils/utils';
 
 interface SuggestionsListProps {
     handleSuggestionClick: (suggestion: string) => void;
-    highlightMatch: (suggestion: string, query: string) => JSX.Element | string;
 }
 
-const SuggestionsList: React.FC<SuggestionsListProps> = ({ handleSuggestionClick, highlightMatch }) => {
+const SuggestionsList: React.FC<SuggestionsListProps> = ({ handleSuggestionClick }) => {
     const { suggestions, suggestionPosition, inputValue } = useTagInputStore();
 
     if (suggestions.length === 0) return null;
