@@ -1,6 +1,6 @@
 #  Front-End technical challenge: Coding exercise - #tag function
 
- ![preview](https://github.com/kristinamartinkevich/tag-input/blob/main/src/assets/preview.png?raw=true)
+<img src="https://github.com/kristinamartinkevich/tag-input/blob/main/src/assets/preview.png" alt="preview" width="250" />
 
 
 Write a #tag function and implement it in an input text area or other object managing text. The resulting field should:
