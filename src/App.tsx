@@ -1,5 +1,5 @@
 import './App.css'
-import TagInput from './TagInput'
+import TagInput from './modules/HashtagInput/components/TagInput'
 
 function App() {
 

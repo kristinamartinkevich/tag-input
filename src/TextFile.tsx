@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import Autocomplete from './TagInput';
+import Autocomplete from './modules/HashtagInput/components/TagInput';
 
 const TextInput = () => {
     const [tags, setTags] = useState<string[]>([]);

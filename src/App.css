@@ -14,17 +14,17 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 3px;
+  padding: .45rem .82rem;
   font-size: 16px;
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
   word-wrap: break-word;
-  color: transparent; 
-  pointer-events: none; 
+  color: transparent;
+  pointer-events: none;
   z-index: 1;
 }
 
 .formatted-input .tag {
-  color: blue; 
+  color: rgb(29, 155, 240);
 }
 
 .textarea {
@@ -35,28 +35,44 @@
   background: transparent;
   z-index: 2;
   color: black;
-  caret-color: black; 
+  caret-color: black;
   border: 1px solid #ddd;
   height: 100px;
+  line-height:24px;
 }
 
 .suggestions {
   list-style: none;
-  border: 1px solid #ddd;
   background-color: white;
   margin-top: 5px;
   position: absolute;
-  width: 100%;
+  width: auto;
+  max-width: 300px;
   max-height: 150px;
   overflow-y: auto;
   z-index: 3;
 }
 
+.hashtag{
+   color: rgb(29, 155, 240);
+     font-weight: bold;
+}
+
 .suggestions li {
   padding: 10px;
   cursor: pointer;
+  font-weight: normal!important;
 }
 
 .suggestions li:hover {
   background-color: #f0f0f0;
+}
+
+textarea {
+   resize: none;
+}
+
+.highlight {
+ color: rgb(29, 155, 240);
+   font-weight: bold;
 }
